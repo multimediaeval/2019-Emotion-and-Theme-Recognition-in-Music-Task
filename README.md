@@ -53,8 +53,8 @@ Music Technology Group, Universitat Pompeu Fabra, Spain (first.last@upf.edu):
 
 [MIP-Frontiers](https://mip-frontiers.eu/), [Jamendo](https://www.jamendo.com/)
 
-![MIP-Frontiers](img/eu.svg) ![Jamendo](img/jamendo-licensing.svg)
+<img src="img/mip.svg" height="64" hspace="20"><img src="img/jamendo-licensing.svg" height="64" hspace="20">
 
 This project has received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Skłodowsa-Curie grant agreement No. 765068
 
-![European Union](img/eu.svg)
+<img src="img/eu.svg" height="64" hspace="20">
