@@ -1,4 +1,4 @@
-# 2019 Emotion and Theme Recognition in Music Using Jamendo
+# Emotion and Theme Recognition in Music Using Jamendo
 
 The goal of this task is to recognize the emotions and themes conveyed in a music recording.
 
@@ -22,7 +22,7 @@ Researchers in areas of music information retrieval, music psychology, machine l
 
 ## Data
 
-Raw audio data is provided by Jamendo under Creative Commons license and includes 50k audio tracks with mood and theme annotations. There are 267 tags with tracks possibly having more than one tag. 204 of those tags have arousal and valence values.
+Raw audio data is provided by Jamendo under Creative Commons license and includes 50k audio tracks with mood and theme annotations. There are 267 tags with tracks possibly having more than one tag.
 
 ## Evaluation methodology
 
