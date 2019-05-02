@@ -42,17 +42,17 @@ For this task we are using 2 metrics: **ROC-AUC** and **PR-AUC** for measuring t
 
 ## Recommended reading
 
-[1] Soleymani, M., Caro, M. N., Schmidt, E. M., Sha, C. Y., & Yang, Y. H. (2013). 1000 songs for emotional analysis of music. In Proceedings of the 2nd ACM international workshop on Crowdsourcing for multimedia (CrowdMM 2013), (pp. 1-6).
+[1] Soleymani, M., Caro, M. N., Schmidt, E. M., Sha, C. Y., & Yang, Y. H. (2013). [1000 songs for emotional analysis of music](https://ibug.doc.ic.ac.uk/media/uploads/documents/cmm13-soleymani.pdf). In Proceedings of the 2nd ACM international workshop on Crowdsourcing for multimedia (CrowdMM 2013), (pp. 1-6).
 
-[2]Aljanaki, A., Yang, Y. H., & Soleymani, M. (2014, October). Emotion in Music Task at MediaEval 2014. In MediaEval.
+[2] Aljanaki, A., Yang, Y. H., & Soleymani, M. (2014, October). [Emotion in Music Task at MediaEval 2014](http://ceur-ws.org/Vol-1263/mediaeval2014_submission_33.pdf).
 
-[3] Panda, R., Malheiro, R., & Paiva R. P. (2018). Musical Texture and Expressivity Features for Music Emotion Recognition. In Proceedings of the International Society on Music Information Retrieval Conference (ISMIR2018), (pp. 383-391).
+[3] Panda, R., Malheiro, R., & Paiva R. P. (2018). [Musical Texture and Expressivity Features for Music Emotion Recognition](http://mir.dei.uc.pt/pdf/Conferences/MOODetector/ISMIR_2018_Panda.pdf). In Proceedings of the International Society on Music Information Retrieval Conference (ISMIR2018), (pp. 383-391).
 
-[4] Laurier, C., Meyers, O., Serra, J., Blech, M., & Herrera, P. (2009). Music mood annotator design and integration. In 7th International Workshop on Content-Based Multimedia Indexing (CBMI'09), (pp. 156-161).
+[4] Laurier, C., Meyers, O., Serra, J., Blech, M., & Herrera, P. (2009). [Music mood annotator design and integration](http://mtg.upf.edu/files/publications/Laurier_MusicMoodAnnotator.pdf). In 7th International Workshop on Content-Based Multimedia Indexing (CBMI'09), (pp. 156-161).
 
-[5] Kim, Y. E., Schmidt, E. M., Migneco, R., Morton, B. G., Richardson, P., Scott, J., ... & Turnbull, D. (2010, August). Music emotion recognition: A state of the art review. In Proceedings of the International Society on Music Information Retrieval Conference (ISMIR2010), (pp. 255-266).
+[5] Kim, Y. E., Schmidt, E. M., Migneco, R., Morton, B. G., Richardson, P., Scott, J., Speck, J. A. & Turnbull, D. (2010, August). [Music emotion recognition: A state of the art review](http://ismir2010.ismir.net/proceedings/ismir2010-45.pdf). In Proceedings of the International Society on Music Information Retrieval Conference (ISMIR2010), (pp. 255-266).
 
-[6] Hu, X., & Downie, J. S. (2007). Exploring Mood Metadata: Relationships with Genre, Artist and Usage Metadata. In Proceedings of the International Conference on Music Information Retrieval (ISMIR2007), pp. 67-72.
+[6] Hu, X., & Downie, J. S. (2007). [Exploring Mood Metadata: Relationships with Genre, Artist and Usage Metadata](http://ismir2007.ismir.net/proceedings/ISMIR2007_p067_hu.pdf). In Proceedings of the International Conference on Music Information Retrieval (ISMIR2007), pp. 67-72.
 
 ## Task organizers
 
