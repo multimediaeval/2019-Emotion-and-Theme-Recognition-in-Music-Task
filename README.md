@@ -1,6 +1,18 @@
 # Emotion and Theme Recognition in Music Using Jamendo
 
-The goal of this task is to recognize the emotions and themes conveyed in a music recording.
+The goal of this task is to automatically recognize the emotions and themes conveyed in a music recording using machine learning algorithms.
+
+## Task Schedule
+
+* 13 May: Data released
+* May-September: Participants work on algorithms
+* September: Submissions open
+* 20 September: Deadline for final submissions to organisers
+* 25 September: Results returned to participants
+* 1 October: Working notes deadline 
+* 7 October: Feedback on working notes to participants 
+* 11 October: Camera Ready version of working notes due
+* October 27-29: MediaEval 2019 Workshop held near Nice, France
 
 ## Task Description
 
@@ -16,13 +28,13 @@ We provide a dataset that is split into training, validation and testing subsets
 
 Emotion recognition can have various applications such as in auto-tagging or recommendation systems. What differentiates this task from a generic auto-tagging problem is that we want to identify features (either engineered or learned by deep learning architectures) that are good at distinguishing tags in terms of arousal-valence representation of human emotion [2].
 
-## Target group
+## Target Audience
 
 Researchers in areas of music information retrieval, music psychology, machine learning a generally music and technology enthusiasts.
 
 ## Data
 
-Raw audio data is provided by Jamendo under Creative Commons license and includes 50k audio tracks with mood and theme annotations. There are 267 tags with tracks possibly having more than one tag.
+We provide audio data from [Jamendo](https://jamendo.com) under Creative Commons licenses and includes 50k audio tracks with mood and theme annotations. There are 267 tags with tracks possibly having more than one tag.
 
 ## Evaluation methodology
 
