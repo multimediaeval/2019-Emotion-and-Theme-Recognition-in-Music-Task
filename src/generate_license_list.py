@@ -22,7 +22,7 @@ ATTRIBUTES = dict(
     sa = 'Share-Alike',
     )
 
-def parse_license_url(url: str) -> List[str]:
+def parse_cc_license_url(url: str) -> List[str]:
     """Return a sequence of attributes for the given license URL.
     From https://wiki.creativecommons.org/wiki/License_Properties"""
 
@@ -38,11 +38,31 @@ def parse_license_url(url: str) -> List[str]:
 
     return [ATTRIBUTES[n] for n in attribute_codes]
 
+def get_license(license_url):
+    if "creativecommons.org" in license_url:
+        return parse_license_cc(license_url)
+    elif "artlibre.org" in license_url:
+        return parse_license_lal(license_url)
+    elif license_url == "":
+        # empty license seems to be by-nc
+        return parse_license_cc("http://creativecommons.org/licenses/by-nc/3.0/")
+    else:
+        assert False, "unknown license url: %s" % license_url
+
+
+def parse_license_cc(license_url):
+    license_parts = parse_cc_license_url(license_url)
+    return 'Available under a Creative Commons {} license: {}'.format('-'.join(license_parts), license_url)
+
+
+def parse_license_lal(license_url):
+    return 'Available under License Art Libre: http://artlibre.org/licence/lal/'
+
+
 def cc_attribution(recording_metadata):
     print('{} by {} from Jamendo: {}'.format(recording_metadata['name'], recording_metadata['artist_name'], recording_metadata['shareurl']))
     license_url = recording_metadata['license_ccurl']
-    license_parts = parse_license_url(license_url)
-    print('Available under a Creative Commons {} license: {}'.format('-'.join(license_parts), license_url))
+    license_string = get_license(license_url)
 
 def generate_attribution(archive_recordings, jamendo_metadata):
     for rid, filename in archive_recordings:
