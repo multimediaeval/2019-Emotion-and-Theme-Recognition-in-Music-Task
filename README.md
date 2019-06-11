@@ -37,7 +37,7 @@ Emotion recognition can have various applications such as in auto-tagging or rec
 Researchers in areas of music information retrieval, music psychology, machine learning a generally music and technology enthusiasts.
 
 ## Data
-The dataset used for this task is the `autotagging-moodtheme` subset of the [MTG-Jamendo dataset](https://github.com/MTG/jamendo-dataset), built using audio data from [Jamendo](https://jamendo.com) under Creative Commons licenses. This subset includes 18,486 audio tracks with mood and theme annotations. In total, there are 57 tags, and tracks can possible have more than one tag.
+The dataset used for this task is the `autotagging-moodtheme` subset of the [MTG-Jamendo dataset](https://github.com/MTG/jamendo-dataset), built using audio data from [Jamendo](https://jamendo.com) and made available under Creative Commons licenses. This subset includes 18,486 audio tracks with mood and theme annotations. In total, there are 57 tags, and tracks can possibly have more than one tag.
 
 ### Audio
 
@@ -62,9 +62,9 @@ The MTG-Jamendo dataset provides multiple random data splits for training, valid
 
 
 ## Submissions
-Participants should develop their systems using [training](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-train.tsv) and [validation](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-validation.tsv) splits, and generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv).
+Participants should develop their systems using the provided [training](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-train.tsv) and [validation](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-validation.tsv) splits, and generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv).
 
-Participants should then submit those predictions to the task organizers. Note that we rely on the fairness of submissions and do not hide the ground truth for the test split. It is publicly available for benchmarking as a part of the MTG-Jamendo dataset outside this challenge. For transparency and reproducibility, we encourage the participants to open-source their code.
+Participants should then submit those predictions to the task organizers. Note that we rely on the fairness of submissions and do not hide the ground truth for the test split. It is publicly available for benchmarking as a part of the MTG-Jamendo dataset outside this challenge. For transparency and reproducibility, we encourage the participants to publically release their code under an open-source/free software license.
 
 
 ## Evaluation methodology
