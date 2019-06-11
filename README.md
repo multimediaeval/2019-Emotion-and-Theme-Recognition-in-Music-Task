@@ -2,6 +2,10 @@
 
 The goal of this task is to automatically recognize the emotions and themes conveyed in a music recording using machine learning algorithms.
 
+## Announcements
+* **11 June: Data is now available to download**
+
+
 ## Task Schedule
 
 * 13 May: Data released
@@ -33,12 +37,39 @@ Emotion recognition can have various applications such as in auto-tagging or rec
 Researchers in areas of music information retrieval, music psychology, machine learning a generally music and technology enthusiasts.
 
 ## Data
+The dataset used for this task is the `autotagging-moodtheme` subset of the [MTG-Jamendo dataset](https://github.com/MTG/jamendo-dataset), built using audio data from [Jamendo](https://jamendo.com) under Creative Commons licenses. This subset includes 18,486 audio tracks with mood and theme annotations. In total, there are 57 tags, and tracks can possible have more than one tag.
 
-We provide audio data from [Jamendo](https://jamendo.com) under Creative Commons licenses and includes 50k audio tracks with mood and theme annotations. There are 267 tags with tracks possibly having more than one tag.
+### Audio
+
+We provide audio files in 320kbps MP3 format (152 GB) as well as NPY numpy archives with pre-computed mel-spectrograms (68 GB). To download the data use the [scripts and instructions provided for the MTG-Jamendo dataset](https://github.com/MTG/jamendo-dataset#downloading-the-dataset).
+
+To download audio for the task, unpack and validate all tar archives:
+
+```
+mkdir /path/to/download
+python3 scripts/download/download_gdrive.py --dataset autotagging_moodtheme --type audio /path/to/download --unpack --remove
+```
+
+
+Similarly, to download mel-spectrograms:
+```
+mkdir /path/to/download_melspecs
+python3 scripts/download/download_gdrive.py --dataset autotagging_moodtheme --type melspecs /path/to/download --unpack --remove
+```
+
+### Training, validation and test data
+The MTG-Jamendo dataset provides multiple random data splits for training, validation and testing (60-20-20%). For this challenge we use one of those splits ([split-0](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0)).
+
+
+## Submissions
+Participants should develop their systems using [training](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-train.tsv) and [validation](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-validation.tsv) splits, and generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv).
+
+Participants should then submit those predictions to the task organizers. Note that we rely on the fairness of submissions and do not hide the ground truth for the test split. It is publicly available for benchmarking as a part of the MTG-Jamendo dataset outside this challenge. For transparency and reproducibility, we encourage the participants to open-source their code.
+
 
 ## Evaluation methodology
 
-For this task we are using 2 metrics: **ROC-AUC** and **PR-AUC** for measuring the accuracy of tags (agnostic to the meaning of tags)
+For this task we are using 2 metrics: **ROC-AUC** and **PR-AUC** for measuring the accuracy of tags predicted for the test split (agnostic to the meaning of tags).
 
 ## Recommended reading
 
@@ -61,6 +92,7 @@ Music Technology Group, Universitat Pompeu Fabra, Spain (first.last@upf.edu):
 - Dmitry Bogdanov
 - Alastair Porter
 - Philip Tovstogan
+- Minz Won
 
 ## Acknowledgements
 
