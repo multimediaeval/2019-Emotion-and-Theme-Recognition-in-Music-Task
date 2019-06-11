@@ -26,17 +26,22 @@ This task involves the prediction of moods and themes conveyed by a music track,
 
 Participants are expected to train a model that takes raw audio as an input and outputs the predicted tags. To solve the task, participants can use any audio input representation they desire, be it traditional handcrafted audio features or spectrograms or raw audio inputs for deep learning approaches. We will provide a handcrafted feature set extracted by the [Essentia](https://essentia.upf.edu/documentation/) audio analysis library as a reference.
 
-The generated outputs for the test dataset will be evaluated according to typical accuracy metrics like ROC-AUC and PR-AUC.
+The generated outputs for the test dataset will be evaluated according to typical performance metrics like ROC-AUC, PR-AUC and micro/macro F-score (the information regarding the evaluation and will be be updated soon).
 
 We provide a dataset that is split into training, validation and testing subsets with emotion and theme labels properly balanced.
-
-Emotion recognition can have various applications such as in auto-tagging or recommendation systems. What differentiates this task from a generic auto-tagging problem is that we want to identify features (either engineered or learned by deep learning architectures) that are good at distinguishing tags in terms of arousal-valence representation of human emotion [2].
 
 ## Target Audience
 
 Researchers in areas of music information retrieval, music psychology, machine learning a generally music and technology enthusiasts.
 
+
+## Evaluation methodology
+
+For this task we are using 2 metrics: **ROC-AUC** and **PR-AUC** for measuring the accuracy of tags predicted for the test split (agnostic to the meaning of tags).
+
+
 ## Data
+
 The dataset used for this task is the `autotagging-moodtheme` subset of the [MTG-Jamendo dataset](https://github.com/MTG/jamendo-dataset), built using audio data from [Jamendo](https://jamendo.com) and made available under Creative Commons licenses. This subset includes 18,486 audio tracks with mood and theme annotations. In total, there are 57 tags, and tracks can possibly have more than one tag.
 
 ### Audio
@@ -63,14 +68,14 @@ The MTG-Jamendo dataset provides multiple random data splits for training, valid
 Participants should develop their systems using the provided [training](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-train.tsv) and [validation](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-validation.tsv) splits.
 
 ## Submissions
-Participants should generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv) and submit those to the task organizers in the same format as the original ground truth.
+Participants should generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv) and submit those to the task organizers in the same format as the original ground truth. The submissions should report the obtained AUC scores.
 
 Note that we rely on the fairness of submissions and do not hide the ground truth for the test split. It is publicly available for benchmarking as a part of the MTG-Jamendo dataset outside this challenge. For transparency and reproducibility, we encourage the participants to publically release their code under an open-source/free software license.
 
 
-## Evaluation methodology
+## Baseline approach
+A baseline approach will be announced soon.
 
-For this task we are using 2 metrics: **ROC-AUC** and **PR-AUC** for measuring the accuracy of tags predicted for the test split (agnostic to the meaning of tags).
 
 ## Recommended reading
 
