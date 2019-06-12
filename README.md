@@ -3,13 +3,12 @@
 The goal of this task is to automatically recognize the emotions and themes conveyed in a music recording using machine learning algorithms.
 
 ## Announcements
-* **11 June: Data is now available to download**
+* **12 June: Data is now available to download**. We will announce the submission format and provide scripts to validate submissions soon.
 
 
 ## Task Schedule
 
-* 13 May: Data released
-* May-September: Participants work on algorithms
+* June-September: Participants work on algorithms
 * September: Submissions open
 * 20 September: Deadline for final submissions to organisers
 * 25 September: Results returned to participants
@@ -33,11 +32,6 @@ We provide a dataset that is split into training, validation and testing subsets
 ## Target Audience
 
 Researchers in areas of music information retrieval, music psychology, machine learning a generally music and technology enthusiasts.
-
-
-## Evaluation methodology
-
-For this task we are using 2 metrics: **ROC-AUC** and **PR-AUC** for measuring the accuracy of tags predicted for the test split (agnostic to the meaning of tags).
 
 
 ## Data
@@ -67,8 +61,19 @@ The MTG-Jamendo dataset provides multiple random data splits for training, valid
 
 Participants should develop their systems using the provided [training](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-train.tsv) and [validation](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-validation.tsv) splits.
 
-## Submissions
-Participants should generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv) and submit those to the task organizers in the same format as the original ground truth. The submissions should report the obtained AUC scores.
+
+## Submissions and evaluation
+Participants should generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv) and submit those to the task organizers.
+
+To have a better understanding of the behavior of the proposed systems, we ask to submit both prediction scores and binary classification decisions for each tag for the tracks in the test set.
+
+We will use the following metrics, both types commonly used in the evaluation of auto-tagging systems:
+- **ROC-AUC** and **PR-AUC** on tag prediction scores
+- Micro- and macro-averaged **precision**, **recall** and **F-score** for binary predictions.
+
+Participants should report the obtained metric scores on the validation split and test split if they have run such a test on their own. Participants should also report whether they used the whole development dataset or only its part for every submission.
+
+We allow only five evaluation runs per participating team.
 
 Note that we rely on the fairness of submissions and do not hide the ground truth for the test split. It is publicly available for benchmarking as a part of the MTG-Jamendo dataset outside this challenge. For transparency and reproducibility, we encourage the participants to publically release their code under an open-source/free software license.
 
