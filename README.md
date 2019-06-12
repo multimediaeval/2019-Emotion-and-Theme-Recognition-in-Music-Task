@@ -25,9 +25,9 @@ This task involves the prediction of moods and themes conveyed by a music track,
 
 Participants are expected to train a model that takes raw audio as an input and outputs the predicted tags. To solve the task, participants can use any audio input representation they desire, be it traditional handcrafted audio features or spectrograms or raw audio inputs for deep learning approaches. We will provide a handcrafted feature set extracted by the [Essentia](https://essentia.upf.edu/documentation/) audio analysis library as a reference.
 
-The generated outputs for the test dataset will be evaluated according to typical performance metrics like ROC-AUC, PR-AUC and micro/macro F-score (the information regarding the evaluation and will be be updated soon).
+The generated outputs for the test dataset will be evaluated according to typical performance metrics like ROC-AUC, PR-AUC and micro/macro-averaged precision, recall and F-score.
 
-We provide a dataset that is split into training, validation and testing subsets with emotion and theme labels properly balanced.
+We provide a dataset that is split into training, validation and testing subsets with emotion and theme labels properly balanced between subsets.
 
 ## Target Audience
 
@@ -65,7 +65,7 @@ Participants should develop their systems using the provided [training](https://
 ## Submissions and evaluation
 Participants should generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv) and submit those to the task organizers.
 
-To have a better understanding of the behavior of the proposed systems, we ask to submit both prediction scores and binary classification decisions for each tag for the tracks in the test set.
+To have a better understanding of the behavior of the proposed systems, we ask to submit both prediction (probability) scores and binary classification decisions for each tag for the tracks in the test set.
 
 We will use the following metrics, both types commonly used in the evaluation of auto-tagging systems:
 - **ROC-AUC** and **PR-AUC** on tag prediction scores
