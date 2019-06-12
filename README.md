@@ -36,7 +36,7 @@ Researchers in areas of music information retrieval, music psychology, machine l
 
 ## Data
 
-The dataset used for this task is the `autotagging-moodtheme` subset of the [MTG-Jamendo dataset](https://github.com/MTG/jamendo-dataset), built using audio data from [Jamendo](https://jamendo.com) and made available under Creative Commons licenses. This subset includes 18,486 audio tracks with mood and theme annotations. In total, there are 57 tags, and tracks can possibly have more than one tag.
+The dataset used for this task is the `autotagging-moodtheme` subset of the [MTG-Jamendo dataset](https://github.com/MTG/jamendo-dataset) [1], built using audio data from [Jamendo](https://jamendo.com) and made available under Creative Commons licenses. This subset includes 18,486 audio tracks with mood and theme annotations. In total, there are 57 tags, and tracks can possibly have more than one tag.
 
 ### Audio
 
@@ -84,17 +84,19 @@ A baseline approach will be announced soon.
 
 ## Recommended reading
 
-[1] Soleymani, M., Caro, M. N., Schmidt, E. M., Sha, C. Y., & Yang, Y. H. (2013). [1000 songs for emotional analysis of music](https://ibug.doc.ic.ac.uk/media/uploads/documents/cmm13-soleymani.pdf). In Proceedings of the 2nd ACM international workshop on Crowdsourcing for multimedia (CrowdMM 2013), (pp. 1-6).
+[1] Bogdanov, D., Won M., Tovstogan P., Porter A., & Serra X. (2019).  [The MTG-Jamendo Dataset for Automatic Music Tagging](http://mtg.upf.edu/node/3957). Machine Learning for Music Discovery Workshop, International Conference on Machine Learning (ICML 2019).
 
-[2] Aljanaki, A., Yang, Y. H., & Soleymani, M. (2014, October). [Emotion in Music Task at MediaEval 2014](http://ceur-ws.org/Vol-1263/mediaeval2014_submission_33.pdf).
+[2] Soleymani, M., Caro, M. N., Schmidt, E. M., Sha, C. Y., & Yang, Y. H. (2013). [1000 songs for emotional analysis of music](https://ibug.doc.ic.ac.uk/media/uploads/documents/cmm13-soleymani.pdf). In Proceedings of the 2nd ACM international workshop on Crowdsourcing for multimedia (CrowdMM 2013), (pp. 1-6).
 
-[3] Panda, R., Malheiro, R., & Paiva R. P. (2018). [Musical Texture and Expressivity Features for Music Emotion Recognition](http://mir.dei.uc.pt/pdf/Conferences/MOODetector/ISMIR_2018_Panda.pdf). In Proceedings of the International Society on Music Information Retrieval Conference (ISMIR2018), (pp. 383-391).
+[3] Aljanaki, A., Yang, Y. H., & Soleymani, M. (2014, October). [Emotion in Music Task at MediaEval 2014](http://ceur-ws.org/Vol-1263/mediaeval2014_submission_33.pdf).
 
-[4] Laurier, C., Meyers, O., Serra, J., Blech, M., & Herrera, P. (2009). [Music mood annotator design and integration](http://mtg.upf.edu/files/publications/Laurier_MusicMoodAnnotator.pdf). In 7th International Workshop on Content-Based Multimedia Indexing (CBMI'09), (pp. 156-161).
+[4] Panda, R., Malheiro, R., & Paiva R. P. (2018). [Musical Texture and Expressivity Features for Music Emotion Recognition](http://mir.dei.uc.pt/pdf/Conferences/MOODetector/ISMIR_2018_Panda.pdf). In Proceedings of the International Society on Music Information Retrieval Conference (ISMIR2018), (pp. 383-391).
 
-[5] Kim, Y. E., Schmidt, E. M., Migneco, R., Morton, B. G., Richardson, P., Scott, J., Speck, J. A. & Turnbull, D. (2010, August). [Music emotion recognition: A state of the art review](http://ismir2010.ismir.net/proceedings/ismir2010-45.pdf). In Proceedings of the International Society on Music Information Retrieval Conference (ISMIR2010), (pp. 255-266).
+[5] Laurier, C., Meyers, O., Serra, J., Blech, M., & Herrera, P. (2009). [Music mood annotator design and integration](http://mtg.upf.edu/files/publications/Laurier_MusicMoodAnnotator.pdf). In 7th International Workshop on Content-Based Multimedia Indexing (CBMI'09), (pp. 156-161).
 
-[6] Hu, X., & Downie, J. S. (2007). [Exploring Mood Metadata: Relationships with Genre, Artist and Usage Metadata](http://ismir2007.ismir.net/proceedings/ISMIR2007_p067_hu.pdf). In Proceedings of the International Conference on Music Information Retrieval (ISMIR2007), pp. 67-72.
+[6] Kim, Y. E., Schmidt, E. M., Migneco, R., Morton, B. G., Richardson, P., Scott, J., Speck, J. A. & Turnbull, D. (2010, August). [Music emotion recognition: A state of the art review](http://ismir2010.ismir.net/proceedings/ismir2010-45.pdf). In Proceedings of the International Society on Music Information Retrieval Conference (ISMIR2010), (pp. 255-266).
+
+[7] Hu, X., & Downie, J. S. (2007). [Exploring Mood Metadata: Relationships with Genre, Artist and Usage Metadata](http://ismir2007.ismir.net/proceedings/ISMIR2007_p067_hu.pdf). In Proceedings of the International Conference on Music Information Retrieval (ISMIR2007), pp. 67-72.
 
 ## Task organizers
 
