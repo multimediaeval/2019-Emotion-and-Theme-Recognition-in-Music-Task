@@ -23,7 +23,7 @@ Emotion and theme recognition is a popular task in music information retrieval t
 
 This task involves the prediction of moods and themes conveyed by a music track, given the raw audio. The examples of moods and themes are: happy, dark, epic, melodic, love, film, space etc. Each track is tagged with at least one tag that serves as a ground-truth.
 
-Participants are expected to train a model that takes raw audio as an input and outputs the predicted tags. To solve the task, participants can use any audio input representation they desire, be it traditional handcrafted audio features or spectrograms or raw audio inputs for deep learning approaches. We will provide a handcrafted feature set extracted by the [Essentia](https://essentia.upf.edu/documentation/) audio analysis library as a reference.
+Participants are expected to train a model that takes raw audio as an input and outputs the predicted tags. To solve the task, participants can use any audio input representation they desire, be it traditional handcrafted audio features or spectrograms or raw audio inputs for deep learning approaches. We will provide a handcrafted feature set extracted by the [Essentia](https://essentia.upf.edu/documentation/) audio analysis library as a reference. We allow usage of third-party datsets for model development and training, but it needs to be mentioned explicitly.
 
 The generated outputs for the test dataset will be evaluated according to typical performance metrics like ROC-AUC, PR-AUC and micro/macro-averaged precision, recall and F-score.
 
