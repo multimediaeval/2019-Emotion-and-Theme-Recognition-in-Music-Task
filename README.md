@@ -61,6 +61,8 @@ The MTG-Jamendo dataset provides multiple random data splits for training, valid
 
 Participants should develop their systems using the provided [training](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-train.tsv) and [validation](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-validation.tsv) splits.
 
+We place no restrictions on the use of 3rd party datasets for the development of the systems. In this case, we ask the participants to also provide a baseline system using only data from the official training/validation set.
+
 
 ## Submissions and evaluation
 Participants should generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv) and submit those to the task organizers.
