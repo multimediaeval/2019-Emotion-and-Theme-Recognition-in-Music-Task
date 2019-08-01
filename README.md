@@ -54,13 +54,13 @@ python3 scripts/download/download.py --dataset autotagging_moodtheme --type audi
 Similarly, to download mel-spectrograms:
 ```
 mkdir /path/to/download_melspecs
-python3 scripts/download/download.py --dataset autotagging_moodtheme --type melspecs /path/to/download --unpack --remove
+python3 scripts/download/download.py --dataset autotagging_moodtheme --type melspecs /path/to/download_melspecs --unpack --remove
 ```
 
 To download Essentia (AcousticBrainz) features:
 ```
-mkdir /path/to/download_melspecs
-python3 scripts/download/download.py --dataset autotagging_moodtheme --type acousticbrainz /path/to/download --unpack --remove
+mkdir /path/to/download_acousticbrainz
+python3 scripts/download/download.py --dataset autotagging_moodtheme --type acousticbrainz /path/to/download_acousticbrainz --unpack --remove
 ```
 
 
