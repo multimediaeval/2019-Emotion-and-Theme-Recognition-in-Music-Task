@@ -3,6 +3,7 @@
 The goal of this task is to automatically recognize the emotions and themes conveyed in a music recording using machine learning algorithms.
 
 ## Announcements
+* 7 August: We have formalized the submission format and now provide evaluation scripts for self-evaluation, see *submissions and evaluations* section below
 * 1 August: We have expanded our dataset with pre-computed statistical features from [Essentia](https://essentia.upf.edu) using the feature extractor for [AcousticBrainz](https://acousticbrainz.org/). These features are were previously used in the MediaEval genre recognition tasks in [2017](https://multimediaeval.github.io/2017-AcousticBrainz-Genre-Task/) and [2018](https://multimediaeval.github.io/2018-AcousticBrainz-Genre-Task/).
 * **12 June: Data is now available to download**. We will announce the submission format and provide scripts to validate submissions soon.
 
@@ -75,13 +76,22 @@ We place no restrictions on the use of 3rd party datasets for the development of
 ## Submissions and evaluation
 Participants should generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv) and submit those to the task organizers.
 
-To have a better understanding of the behavior of the proposed systems, we ask to submit both prediction (probability) scores and binary classification decisions for each tag for the tracks in the test set.
+To have a better understanding of the behavior of the proposed systems, we ask to submit both **prediction** (probability) scores and binary classification **decisions** for each tag for the tracks in the test set.
+
+The submission format is two `.npy` files containing a numpy matrix with rows representing tracks and columns - tags. The dimensions should be **4231 tracks x 56 tags**. The order of tracks should be the same as in the test split and the order of tags is an alphabetically sorted one, please refer to [this file](https://github.com/MTG/mtg-jamendo-dataset/blob/master/data/tags/moodtheme_split.txt). Use `numpy.save()` to create submission files:
+- `decisions.npy`: `dtype('bool')`, `shape=(4231, 56)`
+- `predictions.npy`: `dtype('float64')`, `shape=(4231, 56)`
 
 We will use the following metrics, both types commonly used in the evaluation of auto-tagging systems:
 - **ROC-AUC** and **PR-AUC** on tag prediction scores
 - Micro- and macro-averaged **precision**, **recall** and **F-score** for binary predictions.
 
-Participants should report the obtained metric scores on the validation split and test split if they have run such a test on their own. Participants should also report whether they used the whole development dataset or only its part for every submission.
+Participants should report the obtained metric scores on the validation split and test split if they have run such a test on their own. Participants should also report whether they used the whole development dataset or only its part for every submission. We provide the scripts to do that in [mtg-jamendo-dataset repository](https://github.com/MTG/mtg-jamendo-dataset):
+
+```
+cd /path/to/mtg-jamendo-dataset/scripts
+python3 mediaeval2019/evaluate.py ../data/mediaeval2019/groundtruth.npy ../data/mediaeval2019/predictions.npy ../data/mediaeval2019/decisions.npy --output-file ../data/mediaeval2019/results.tsv
+```
 
 We allow only five evaluation runs per participating team.
 
