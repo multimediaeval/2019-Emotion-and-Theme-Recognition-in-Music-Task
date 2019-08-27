@@ -3,6 +3,7 @@
 The goal of this task is to automatically recognize the emotions and themes conveyed in a music recording using machine learning algorithms.
 
 ## Announcements
+* 27 August: We have added more details about the use of the validation set and evaluation.
 * 1 August: We have expanded our dataset with pre-computed statistical features from [Essentia](https://essentia.upf.edu) using the feature extractor for [AcousticBrainz](https://acousticbrainz.org/). These features are were previously used in the MediaEval genre recognition tasks in [2017](https://multimediaeval.github.io/2017-AcousticBrainz-Genre-Task/) and [2018](https://multimediaeval.github.io/2018-AcousticBrainz-Genre-Task/).
 * **12 June: Data is now available to download**. We will announce the submission format and provide scripts to validate submissions soon.
 
@@ -62,8 +63,9 @@ The MTG-Jamendo dataset provides multiple random data splits for training, valid
 
 Participants should develop their systems using the provided [training](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-train.tsv) and [validation](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-validation.tsv) splits.
 
-We place no restrictions on the use of 3rd party datasets for the development of the systems. In this case, we ask the participants to also provide a baseline system using only data from the official training/validation set.
+The validation set should be used for tuning hyperparameters of the models and regularization against overfitting by early stopping. These optimizations should not be done using the test set, which should be only used to estimate the performance of the final submissions.
 
+We place no restrictions on the use of 3rd party datasets for the development of the systems. In this case, we ask the participants to also provide a baseline system using only data from the official training/validation set. Similarly, if one wants to append validation set to the training data to build a model using more data for the final submission, a baseline using only training set for training should be provided.
 
 ## Submissions and evaluation
 Participants should generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv) and submit those to the task organizers.
@@ -75,6 +77,8 @@ We will use the following metrics, both types commonly used in the evaluation of
 - Micro- and macro-averaged **precision**, **recall** and **F-score** for binary predictions.
 
 Participants should report the obtained metric scores on the validation split and test split if they have run such a test on their own. Participants should also report whether they used the whole development dataset or only its part for every submission.
+
+For the leaderboard purposes we will use **PR-AUC** as the main metric, however we encourage comprehensive evaluation of the systems by using all metrics with the goal of generating more valuable insights on the proposed models when reporting evaluation results in the working notes.
 
 We allow only five evaluation runs per participating team.
 
