@@ -4,6 +4,7 @@ The goal of this task is to automatically recognize the emotions and themes conv
 
 ## Announcements
 * 27 August: We have added more details about the use of the validation set and evaluation.
+* 7 August: We have formalized the submission format and now provide evaluation scripts for self-evaluation, see *submissions and evaluations* section below
 * 1 August: We have expanded our dataset with pre-computed statistical features from [Essentia](https://essentia.upf.edu) using the feature extractor for [AcousticBrainz](https://acousticbrainz.org/). These features are were previously used in the MediaEval genre recognition tasks in [2017](https://multimediaeval.github.io/2017-AcousticBrainz-Genre-Task/) and [2018](https://multimediaeval.github.io/2018-AcousticBrainz-Genre-Task/).
 * **12 June: Data is now available to download**. We will announce the submission format and provide scripts to validate submissions soon.
 
@@ -25,7 +26,7 @@ Emotion and theme recognition is a popular task in music information retrieval t
 
 This task involves the prediction of moods and themes conveyed by a music track, given the raw audio. The examples of moods and themes are: happy, dark, epic, melodic, love, film, space etc. Each track is tagged with at least one tag that serves as a ground-truth.
 
-Participants are expected to train a model that takes raw audio as an input and outputs the predicted tags. To solve the task, participants can use any audio input representation they desire, be it traditional handcrafted audio features or spectrograms or raw audio inputs for deep learning approaches. We will provide a handcrafted feature set extracted by the [Essentia](https://essentia.upf.edu/documentation/) audio analysis library as a reference.
+Participants are expected to train a model that takes raw audio as an input and outputs the predicted tags. To solve the task, participants can use any audio input representation they desire, be it traditional handcrafted audio features or spectrograms or raw audio inputs for deep learning approaches. We also provide a handcrafted feature set extracted by the [Essentia](https://essentia.upf.edu/documentation/) audio analysis library as a reference. We allow usage of third-party datsets for model development and training, but it needs to be mentioned explicitly.
 
 The generated outputs for the test dataset will be evaluated according to typical performance metrics like ROC-AUC, PR-AUC and micro/macro-averaged precision, recall and F-score.
 
@@ -48,15 +49,22 @@ To download audio for the task, unpack and validate all tar archives:
 
 ```
 mkdir /path/to/download
-python3 scripts/download/download_gdrive.py --dataset autotagging_moodtheme --type audio /path/to/download --unpack --remove
+python3 scripts/download/download.py --dataset autotagging_moodtheme --type audio /path/to/download --unpack --remove
 ```
 
 
 Similarly, to download mel-spectrograms:
 ```
 mkdir /path/to/download_melspecs
-python3 scripts/download/download_gdrive.py --dataset autotagging_moodtheme --type melspecs /path/to/download --unpack --remove
+python3 scripts/download/download.py --dataset autotagging_moodtheme --type melspecs /path/to/download_melspecs --unpack --remove
 ```
+
+To download Essentia (AcousticBrainz) features:
+```
+mkdir /path/to/download_acousticbrainz
+python3 scripts/download/download.py --dataset autotagging_moodtheme --type acousticbrainz /path/to/download_acousticbrainz --unpack --remove
+```
+
 
 ### Training, validation and test data
 The MTG-Jamendo dataset provides multiple random data splits for training, validation and testing (60-20-20%). For this challenge we use one of those splits ([split-0](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0)).
@@ -70,13 +78,22 @@ We place no restrictions on the use of 3rd party datasets for the development of
 ## Submissions and evaluation
 Participants should generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv) and submit those to the task organizers.
 
-To have a better understanding of the behavior of the proposed systems, we ask to submit both prediction (probability) scores and binary classification decisions for each tag for the tracks in the test set.
+To have a better understanding of the behavior of the proposed systems, we ask to submit both **prediction** (probability) scores and binary classification **decisions** for each tag for the tracks in the test set.
+
+The submission format is two `.npy` files containing a numpy matrix with rows representing tracks and columns - tags. The dimensions should be **4231 tracks x 56 tags**. The order of tracks should be the same as in the test split and the order of tags is an alphabetically sorted one, please refer to [this file](https://github.com/MTG/mtg-jamendo-dataset/blob/master/data/tags/moodtheme_split.txt). Use `numpy.save()` to create submission files:
+- `decisions.npy`: `dtype('bool')`, `shape=(4231, 56)`
+- `predictions.npy`: `dtype('float64')`, `shape=(4231, 56)`
 
 We will use the following metrics, both types commonly used in the evaluation of auto-tagging systems:
 - **ROC-AUC** and **PR-AUC** on tag prediction scores
 - Micro- and macro-averaged **precision**, **recall** and **F-score** for binary predictions.
 
-Participants should report the obtained metric scores on the validation split and test split if they have run such a test on their own. Participants should also report whether they used the whole development dataset or only its part for every submission.
+Participants should report the obtained metric scores on the validation split and test split if they have run such a test on their own. Participants should also report whether they used the whole development dataset or only its part for every submission. We provide the scripts to do that in [mtg-jamendo-dataset repository](https://github.com/MTG/mtg-jamendo-dataset):
+
+```
+cd /path/to/mtg-jamendo-dataset/scripts
+python3 mediaeval2019/evaluate.py ../data/mediaeval2019/groundtruth.npy ../data/mediaeval2019/predictions.npy ../data/mediaeval2019/decisions.npy --output-file ../data/mediaeval2019/results.tsv
+```
 
 We will generate rankings of the submissions by ROC-AUC, PR-AUC and micro and macro F-score. For the leaderboard purposes we will use **PR-AUC** as the main metric, however we encourage comprehensive evaluation of the systems by using all metrics with the goal of generating more valuable insights on the proposed models when reporting evaluation results in the working notes.
 
