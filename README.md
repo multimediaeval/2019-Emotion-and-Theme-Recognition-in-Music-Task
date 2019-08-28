@@ -103,7 +103,7 @@ Note that we rely on the fairness of submissions and do not hide the ground trut
 
 
 ## Baseline approach
-We used a broadly used [vgg-ish architecture](https://arxiv.org/pdf/1606.00298.pdf) as our baseline. It consists of five 2D convolutional layers followed by a dense connection. Reproducible codes are available in [mtg-jamendo-dataset repository](https://github.com/MTG/mtg-jamendo-dataset). We trained our model for 1000 epoches and used the validation set to choose the best model. Our experimental result was:
+We used a broadly used [vgg-ish architecture](https://arxiv.org/pdf/1606.00298.pdf) as our baseline. It consists of five 2D convolutional layers followed by a dense connection. Reproducible codes are available in [mtg-jamendo-dataset repository](https://github.com/MTG/mtg-jamendo-dataset). We trained our model for 1000 epochs and used the validation set to choose the best model. Our experimental result was:
 
 ```
 roc_auc: 0.7258
