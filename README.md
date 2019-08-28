@@ -78,7 +78,7 @@ We will use the following metrics, both types commonly used in the evaluation of
 
 Participants should report the obtained metric scores on the validation split and test split if they have run such a test on their own. Participants should also report whether they used the whole development dataset or only its part for every submission.
 
-For the leaderboard purposes we will use **PR-AUC** as the main metric, however we encourage comprehensive evaluation of the systems by using all metrics with the goal of generating more valuable insights on the proposed models when reporting evaluation results in the working notes.
+We will generate rankings of the submissions by ROC-AUC, PR-AUC and micro and macro F-score. For the leaderboard purposes we will use **PR-AUC** as the main metric, however we encourage comprehensive evaluation of the systems by using all metrics with the goal of generating more valuable insights on the proposed models when reporting evaluation results in the working notes.
 
 We allow only five evaluation runs per participating team.
 
