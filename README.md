@@ -3,7 +3,7 @@
 The goal of this task is to automatically recognize the emotions and themes conveyed in a music recording using machine learning algorithms.
 
 ## Announcements
-* 4 September: Final baseline results are now available.
+* 3 September: Final baseline results are now available.
 * 27 August: We have added more details about the use of the validation set and evaluation.
 * 7 August: We have formalized the submission format and now provide evaluation scripts for self-evaluation, see *submissions and evaluations* section below
 * 1 August: We have expanded our dataset with pre-computed statistical features from [Essentia](https://essentia.upf.edu) using the feature extractor for [AcousticBrainz](https://acousticbrainz.org/). These features are were previously used in the MediaEval genre recognition tasks in [2017](https://multimediaeval.github.io/2017-AcousticBrainz-Genre-Task/) and [2018](https://multimediaeval.github.io/2018-AcousticBrainz-Genre-Task/).
@@ -79,7 +79,7 @@ We place no restrictions on the use of 3rd party datasets for the development of
 ## Submissions and evaluation
 Participants should generate predictions for the [test split](https://github.com/MTG/jamendo-dataset/blob/master/data/splits/split-0/autotagging_moodtheme-test.tsv) and submit those to the task organizers.
 
-To have a better understanding of the behavior of the proposed systems, we ask to submit both **prediction** (probability) scores and binary classification **decisions** for each tag for the tracks in the test set.
+To have a better understanding of the behavior of the proposed systems, we ask to submit both **prediction** (probability) scores and binary classification **decisions** for each tag for the tracks in the test set. We provide a [script](https://github.com/MTG/mtg-jamendo-dataset/blob/master/scripts/mediaeval2019/calculate_decisions.py) to calculate activation thresholds and generate decisions from predictions by maximizing macro F-score.
 
 The submission format is two `.npy` files containing a numpy matrix with rows representing tracks and columns - tags. The dimensions should be **4231 tracks x 56 tags**. The order of tracks should be the same as in the test split and the order of tags is an alphabetically sorted one, please refer to [this file](https://github.com/MTG/mtg-jamendo-dataset/blob/master/data/tags/moodtheme_split.txt). Use `numpy.save()` to create submission files:
 - `decisions.npy`: `dtype('bool')`, `shape=(4231, 56)`
@@ -89,11 +89,16 @@ We will use the following metrics, both types commonly used in the evaluation of
 - **ROC-AUC** and **PR-AUC** on tag prediction scores
 - Micro- and macro-averaged **precision**, **recall** and **F-score** for binary predictions.
 
-Participants should report the obtained metric scores on the validation split and test split if they have run such a test on their own. Participants should also report whether they used the whole development dataset or only its part for every submission. We provide the scripts to do that in [mtg-jamendo-dataset repository](https://github.com/MTG/mtg-jamendo-dataset):
+Participants should report the obtained metric scores on the validation split and test split if they have run such a test on their own. Participants should also report whether they used the whole development dataset or only its part for every submission. We provide the scripts to do that in [mtg-jamendo-dataset repository](https://github.com/MTG/mtg-jamendo-dataset/blob/master/scripts/mediaeval2019):
 
 ```
 cd /path/to/mtg-jamendo-dataset/scripts
-python3 mediaeval2019/evaluate.py ../data/mediaeval2019/groundtruth.npy ../data/mediaeval2019/predictions.npy ../data/mediaeval2019/decisions.npy --output-file ../data/mediaeval2019/results.tsv
+python3 mediaeval2019/evaluate.py ../data/mediaeval2019/groundtruth.npy ../data/mediaeval2019/predictions.npy ../results/mediaeval2019/decisions.npy --output-file ../results/mediaeval2019/results.tsv
+```
+
+To generate decisions from predictions using provided script:
+```
+python3 mediaeval2019/calculate_decisions.py ../results/mediaeval2019/groundtruth.npy ../results/mediaeval2019/my_predictions.npy ../data/mediaeval2019/my_thresholds.txt ../data/tags/moodtheme_split.txt --decision-file ../data/mediaeval2019/my_decisions.npy
 ```
 
 We will generate rankings of the submissions by ROC-AUC, PR-AUC and micro and macro F-score. For the leaderboard purposes we will use **PR-AUC** as the main metric, however we encourage comprehensive evaluation of the systems by using all metrics with the goal of generating more valuable insights on the proposed models when reporting evaluation results in the working notes.
@@ -105,16 +110,16 @@ Note that we rely on the fairness of submissions and do not hide the ground trut
 
 ## Baselines
 ### VGG-ish baseline approach
-We used a broadly used [vgg-ish architecture](https://arxiv.org/pdf/1606.00298.pdf) as our baseline. It consists of five 2D convolutional layers followed by a dense connection. Reproducible codes are available in [mtg-jamendo-dataset repository](https://github.com/MTG/mtg-jamendo-dataset). We trained our model for 1000 epochs and used the validation set to choose the best model. Then we have found optimizal decision thresholds for the activation values individually for each tag, maximizing macro F-score ([script](https://github.com/MTG/mtg-jamendo-dataset/blob/master/scripts/mediaeval2019/calculate_decisions.py)). 
+We used a broadly used [vgg-ish architecture](https://arxiv.org/pdf/1606.00298.pdf) as our baseline. It consists of five 2D convolutional layers followed by a dense connection. Reproducible codes are available in [mtg-jamendo-dataset repository](https://github.com/MTG/mtg-jamendo-dataset/tree/master/scripts/baseline). We trained our model for 1000 epochs and used the validation set to choose the best model. Then we have found optimizal decision thresholds for the activation values individually for each tag, maximizing macro F-score ([script](https://github.com/MTG/mtg-jamendo-dataset/blob/master/scripts/mediaeval2019/calculate_decisions.py)). 
 
 Our experimental result was:
 ```
 ROC-AUC 	0.725821
-PR-AUC 	0.107734
-precision-macro 	0.138216
+PR-AUC 		0.107734
+precision-macro 0.138216
 recall-macro 	0.308650
 F-score-macro 	0.165694
-precision-micro 	0.116097
+precision-micro 0.116097
 recall-micro 	0.373480
 F-score-micro 	0.177133
 ```
@@ -180,20 +185,17 @@ mood/theme---upbeat			0.7059 , 0.0398
 mood/theme---uplifting			0.7052 , 0.0540
 ```
 ### Popularity baseline
-Popularity baseline always predicts the most frequent tag in the training set:
+Popularity baseline always predicts the most tag that is used by most artists from the training set:
 ```
 ROC-AUC 	0.500000
-PR-AUC 	0.031924
-precision-macro 	0.000861
+PR-AUC 		0.031924
+precision-macro 0.000861
 recall-macro 	0.017857
 F-score-macro 	0.001643
-precision-micro 	0.048216
+precision-micro 0.048216
 recall-micro 	0.026970
 F-score-micro 	0.034591
 ```
-
-
-
 
 ## Recommended reading
 
