@@ -3,6 +3,7 @@
 The goal of this task is to automatically recognize the emotions and themes conveyed in a music recording using machine learning algorithms.
 
 ## Announcements
+* 4 September: Final baseline results are now available.
 * 27 August: We have added more details about the use of the validation set and evaluation.
 * 7 August: We have formalized the submission format and now provide evaluation scripts for self-evaluation, see *submissions and evaluations* section below
 * 1 August: We have expanded our dataset with pre-computed statistical features from [Essentia](https://essentia.upf.edu) using the feature extractor for [AcousticBrainz](https://acousticbrainz.org/). These features are were previously used in the MediaEval genre recognition tasks in [2017](https://multimediaeval.github.io/2017-AcousticBrainz-Genre-Task/) and [2018](https://multimediaeval.github.io/2018-AcousticBrainz-Genre-Task/).
@@ -102,13 +103,22 @@ We allow only five evaluation runs per participating team.
 Note that we rely on the fairness of submissions and do not hide the ground truth for the test split. It is publicly available for benchmarking as a part of the MTG-Jamendo dataset outside this challenge. For transparency and reproducibility, we encourage the participants to publically release their code under an open-source/free software license.
 
 
-## Baseline approach
-We used a broadly used [vgg-ish architecture](https://arxiv.org/pdf/1606.00298.pdf) as our baseline. It consists of five 2D convolutional layers followed by a dense connection. Reproducible codes are available in [mtg-jamendo-dataset repository](https://github.com/MTG/mtg-jamendo-dataset). We trained our model for 1000 epochs and used the validation set to choose the best model. Our experimental result was:
+## Baselines
+### VGG-ish baseline approach
+We used a broadly used [vgg-ish architecture](https://arxiv.org/pdf/1606.00298.pdf) as our baseline. It consists of five 2D convolutional layers followed by a dense connection. Reproducible codes are available in [mtg-jamendo-dataset repository](https://github.com/MTG/mtg-jamendo-dataset). We trained our model for 1000 epochs and used the validation set to choose the best model. Then we have found optimizal decision thresholds for the activation values individually for each tag, maximizing macro F-score ([script](https://github.com/MTG/mtg-jamendo-dataset/blob/master/scripts/mediaeval2019/calculate_decisions.py)). 
 
+Our experimental result was:
 ```
-roc_auc: 0.7258
-pr_auc: 0.1077
+ROC-AUC 	0.725821
+PR-AUC 	0.107734
+precision-macro 	0.138216
+recall-macro 	0.308650
+F-score-macro 	0.165694
+precision-micro 	0.116097
+recall-micro 	0.373480
+F-score-micro 	0.177133
 ```
+
 and tag-wise AUCs were:
 
 ```
@@ -169,6 +179,21 @@ mood/theme---travel			0.5629 , 0.0097
 mood/theme---upbeat			0.7059 , 0.0398
 mood/theme---uplifting			0.7052 , 0.0540
 ```
+### Popularity baseline
+Popularity baseline always predicts the most frequent tag in the training set:
+```
+ROC-AUC 	0.500000
+PR-AUC 	0.031924
+precision-macro 	0.000861
+recall-macro 	0.017857
+F-score-macro 	0.001643
+precision-micro 	0.048216
+recall-micro 	0.026970
+F-score-micro 	0.034591
+```
+
+
+
 
 ## Recommended reading
 
