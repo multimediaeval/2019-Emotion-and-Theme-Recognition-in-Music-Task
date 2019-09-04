@@ -185,7 +185,7 @@ mood/theme---upbeat			0.7059 , 0.0398
 mood/theme---uplifting			0.7052 , 0.0540
 ```
 ### Popularity baseline
-Popularity baseline always predicts the most tag that is used by most artists from the training set:
+Popularity baseline always predicts tag that is used by the most artists from the training set:
 ```
 ROC-AUC 	0.500000
 PR-AUC 		0.031924
