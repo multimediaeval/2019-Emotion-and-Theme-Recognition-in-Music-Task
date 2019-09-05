@@ -114,14 +114,14 @@ We used a broadly used [vgg-ish architecture](https://arxiv.org/pdf/1606.00298.p
 
 Our experimental result was:
 ```
-ROC-AUC 	0.725821
-PR-AUC 		0.107734
-precision-macro 0.138216
-recall-macro 	0.308650
-F-score-macro 	0.165694
-precision-micro 0.116097
-recall-micro 	0.373480
-F-score-micro 	0.177133
+ROC-AUC            0.725821
+PR-AUC             0.107734
+precision-macro    0.138216
+recall-macro       0.308650
+F-score-macro      0.165694
+precision-micro    0.116097
+recall-micro       0.373480
+F-score-micro      0.177133
 ```
 
 and tag-wise AUCs were:
@@ -185,16 +185,16 @@ mood/theme---upbeat			0.7059 , 0.0398
 mood/theme---uplifting			0.7052 , 0.0540
 ```
 ### Popularity baseline
-Popularity baseline always predicts tag that is used by the most artists from the training set:
+Popularity baseline always predicts the most frequent tag among tracks in the training set:
 ```
-ROC-AUC 	0.500000
-PR-AUC 		0.031924
-precision-macro 0.000861
-recall-macro 	0.017857
-F-score-macro 	0.001643
-precision-micro 0.048216
-recall-micro 	0.026970
-F-score-micro 	0.034591
+ROC-AUC            0.500000
+PR-AUC             0.031924
+precision-macro    0.001427
+recall-macro       0.017857
+F-score-macro      0.002642
+precision-micro    0.079887
+recall-micro       0.044685
+F-score-micro      0.057312
 ```
 
 ## Recommended reading
