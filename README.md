@@ -86,7 +86,7 @@ The submission format is two `.npy` files containing a numpy matrix with rows re
 - `predictions.npy`: `dtype('float64')`, `shape=(4231, 56)`
 
 We will use the following metrics, both types commonly used in the evaluation of auto-tagging systems:
-- **ROC-AUC** and **PR-AUC** on tag prediction scores
+- Macro **ROC-AUC** and **PR-AUC** on tag prediction scores
 - Micro- and macro-averaged **precision**, **recall** and **F-score** for binary predictions.
 
 Participants should report the obtained metric scores on the validation split and test split if they have run such a test on their own. Participants should also report whether they used the whole development dataset or only its part for every submission. We provide the scripts to do that in [mtg-jamendo-dataset repository](https://github.com/MTG/mtg-jamendo-dataset/blob/master/scripts/mediaeval2019):
