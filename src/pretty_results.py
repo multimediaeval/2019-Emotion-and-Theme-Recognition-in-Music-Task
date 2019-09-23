@@ -4,10 +4,11 @@ import pandas as pd
 from pathlib import Path
 
 METRIC = 'PR-AUC-macro'
+METRICS = ['PR-AUC-macro', 'ROC-AUC-macro']
 
 
 def pretty(df: pd.DataFrame):
-    return df.style.format("{:.3f}").render()
+    return df.style.render()
 
 
 if __name__ == '__main__':
@@ -19,21 +20,27 @@ if __name__ == '__main__':
     root = Path(args.directory)
     tsv_files = root.glob('./*.tsv')
     results = {}
-    best = {}
+    leaderboard = None
     for tsv_file in tsv_files:
         team = tsv_file.stem
         data = pd.read_csv(tsv_file, delimiter='\t', index_col=0)
         results[team] = data
 
-        value = data[METRIC].max()
-        run_name = data[METRIC].idxmax()
+        data_slice = data[METRICS]
+        data_slice.insert(0, 'Team', team)
 
-        best['{} ({})'.format(team, run_name)] = value
+        if leaderboard is None:
+            leaderboard = data_slice
+        else:
+            leaderboard = pd.concat([leaderboard, data_slice])
 
-    best = pd.DataFrame(best.values(), best.keys(), columns=[METRIC])
+    leaderboard = leaderboard.sort_values(by=METRIC, ascending=False)
+    leaderboard.insert(1, 'Run', leaderboard.index)
+    leaderboard.reset_index(inplace=True, drop=True)
+    leaderboard.index += 1
 
     output = '## Leaderboard\n\n'
-    output += pretty(best) + '\n\n'
+    output += pretty(leaderboard) + '\n\n'
     output += '## All submissions\n\n'
 
     for team, result in results.items():

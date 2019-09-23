@@ -6,6 +6,14 @@ import pandas as pd
 
 from evaluate import evaluate
 
+
+def extract_run_name(path):
+    run_name = str(path).split(team_name)[1][:-15].strip('-_ /')
+    if '/' in run_name:
+        run_name = run_name.split('/')[0]
+    return run_name
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run evaluation for all teams')
     parser.add_argument('submissions_dir', help='directory with each team submission directory containing prediction '
@@ -25,11 +33,16 @@ if __name__ == '__main__':
         decision_files = sorted(team_dir.glob('**/*decisions.npy'))
 
         # get the name of algorithm that might be either prefix on filename or a directory
-        run_names = [str(path).split(team_name)[1][:-15].strip('-_ /') for path in prediction_files]
+        run_names = [extract_run_name(path) for path in prediction_files]
 
         for name, prediction_file, decision_file in zip(run_names, prediction_files, decision_files):
-            predictions = np.load(prediction_file)
-            decisions = np.load(decision_file)
-            results[name] = evaluate(groundtruth, predictions, decisions)
-        df = pd.DataFrame(results).T
-        df.to_csv(Path(args.results_dir) / (team_name + '.tsv'), sep='\t', float_format='%.6f')
+            try:
+                predictions = np.load(prediction_file)
+                decisions = np.load(decision_file)
+                results[name] = evaluate(groundtruth, predictions, decisions)
+            except ValueError as e:
+                print(e)
+
+        if results:
+            df = pd.DataFrame(results).T
+            df.to_csv(Path(args.results_dir) / (team_name + '.tsv'), sep='\t', float_format='%.6f')
