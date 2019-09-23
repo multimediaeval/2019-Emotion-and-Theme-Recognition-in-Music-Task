@@ -1,0 +1,2 @@
+	F-score-macro	F-score-micro	PR-AUC-macro	PR-AUC-micro	ROC-AUC-macro	ROC-AUC-micro	precision-macro	precision-micro	recall-macro	recall-micro
+vggish	0.002642	0.057312	0.107734	0.140913	0.725821	0.775029	0.001427	0.079887	0.017857	0.044685
