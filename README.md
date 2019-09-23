@@ -86,7 +86,7 @@ The submission format is two `.npy` files containing a numpy matrix with rows re
 - `predictions.npy`: `dtype('float64')`, `shape=(4231, 56)`
 
 We will use the following metrics, both types commonly used in the evaluation of auto-tagging systems:
-- **ROC-AUC** and **PR-AUC** on tag prediction scores
+- Macro **ROC-AUC** and **PR-AUC** on tag prediction scores
 - Micro- and macro-averaged **precision**, **recall** and **F-score** for binary predictions.
 
 Participants should report the obtained metric scores on the validation split and test split if they have run such a test on their own. Participants should also report whether they used the whole development dataset or only its part for every submission. We provide the scripts to do that in [mtg-jamendo-dataset repository](https://github.com/MTG/mtg-jamendo-dataset/blob/master/scripts/mediaeval2019):
@@ -114,14 +114,14 @@ We used a broadly used [vgg-ish architecture](https://arxiv.org/pdf/1606.00298.p
 
 Our experimental result was:
 ```
-ROC-AUC 	0.725821
-PR-AUC 		0.107734
-precision-macro 0.138216
-recall-macro 	0.308650
-F-score-macro 	0.165694
-precision-micro 0.116097
-recall-micro 	0.373480
-F-score-micro 	0.177133
+ROC-AUC            0.725821
+PR-AUC             0.107734
+precision-macro    0.138216
+recall-macro       0.308650
+F-score-macro      0.165694
+precision-micro    0.116097
+recall-micro       0.373480
+F-score-micro      0.177133
 ```
 
 and tag-wise AUCs were:
@@ -185,16 +185,16 @@ mood/theme---upbeat			0.7059 , 0.0398
 mood/theme---uplifting			0.7052 , 0.0540
 ```
 ### Popularity baseline
-Popularity baseline always predicts the most tag that is used by most artists from the training set:
+Popularity baseline always predicts the most frequent tag among tracks in the training set:
 ```
-ROC-AUC 	0.500000
-PR-AUC 		0.031924
-precision-macro 0.000861
-recall-macro 	0.017857
-F-score-macro 	0.001643
-precision-micro 0.048216
-recall-micro 	0.026970
-F-score-micro 	0.034591
+ROC-AUC            0.500000
+PR-AUC             0.031924
+precision-macro    0.001427
+recall-macro       0.017857
+F-score-macro      0.002642
+precision-micro    0.079887
+recall-micro       0.044685
+F-score-micro      0.057312
 ```
 
 ## Recommended reading
