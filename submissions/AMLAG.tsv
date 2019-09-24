@@ -1,0 +1,3 @@
+	PR-AUC-macro	ROC-AUC-macro	F-score-macro	precision-macro	recall-macro	PR-AUC-micro	ROC-AUC-micro	F-score-micro	precision-micro	recall-micro
+submission1	0.035384	0.503855	0.043260	0.033707	0.113894	0.047735	0.606937	0.060230	0.038796	0.134585
+submission2	0.125896	0.752886	0.182957	0.145545	0.391640	0.151706	0.797624	0.164375	0.101350	0.434691
