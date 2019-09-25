@@ -11,6 +11,7 @@ def leaderboard(df: pd.DataFrame, by):
     df = df.sort_values(by=by, ascending=False)
     df.reset_index(inplace=True, drop=True)
     df.index += 1
+    df.style.applymap(lambda x: 'font-weight: bold', subset=df['Team'] == 'baseline')
     return df.style.render()
 
 
@@ -74,7 +75,8 @@ if __name__ == '__main__':
         output += '### ' + team + '\n\n'
         if team in sources:
             output += 'Source code: ' + ', '.join(['[{url}]({url})'.format(url=url) for url in sources[team]]) + '\n\n'
-        output += result.style.render() + '\n\n'
+        output += result[['PR-AUC-macro', 'ROC-AUC-macro', 'F-score-macro', 'precision-macro', 'recall-macro',
+                          'PR-AUC-micro', 'ROC-AUC-micro', 'F-score-micro', 'precision-micro', 'recall-micro']].style.render() + '\n\n'
 
     with open(args.output, 'w') as fp:
         fp.write(output)
