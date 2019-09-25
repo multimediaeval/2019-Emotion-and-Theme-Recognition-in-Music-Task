@@ -1,0 +1,2 @@
+	F-score-macro	F-score-micro	PR-AUC-macro	PR-AUC-micro	ROC-AUC-macro	ROC-AUC-micro	precision-macro	precision-micro	recall-macro	recall-micro
+best	0.185618	0.177358	0.125564	0.145698	0.753199	0.797587	0.160227	0.113482	0.345181	0.405738

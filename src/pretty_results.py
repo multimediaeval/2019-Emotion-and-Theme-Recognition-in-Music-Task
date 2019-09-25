@@ -21,7 +21,7 @@ if __name__ == '__main__':
     tsv_files = root.glob('./*.tsv')
     results = {}
     leaderboard = None
-    for tsv_file in tsv_files:
+    for tsv_file in sorted(tsv_files):
         team = tsv_file.stem
         data = pd.read_csv(tsv_file, delimiter='\t', index_col=0)
         results[team] = data
