@@ -60,7 +60,7 @@ if __name__ == '__main__':
     output += '## Leaderboard - F-score-macro\n\n'
     output += leaderboard(data_all[['Team', 'Run', 'F-score-macro']], by='F-score-macro') + '\n\n'
 
-    output += '## Precision vs recall\n\n'
+    output += '## Precision vs recall (macro)\n\n'
     output += '<img src="img/precision-recall.svg"/>\n\n'
 
     # output += '## PR-AUC-macro vs ROC-AUC-macro\n\n'
