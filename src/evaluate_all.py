@@ -11,6 +11,8 @@ def extract_run_name(path):
     run_name = str(path).split(team_name)[1][:-15].strip('-_ /')
     if '/' in run_name:
         run_name = run_name.split('/')[0]
+    if not run_name:
+        run_name = ' '
     return run_name
 
 
