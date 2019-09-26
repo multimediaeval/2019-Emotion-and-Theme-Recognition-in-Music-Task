@@ -3,7 +3,7 @@
 The goal of this task is to automatically recognize the emotions and themes conveyed in a music recording using machine learning algorithms.
 
 ## Announcements
-* **25 September: The [results](/results) are out!**
+* **25 September: The [results](./results) are out!**
 * 3 September: Final baseline results are now available.
 * 27 August: We have added more details about the use of the validation set and evaluation.
 * 7 August: We have formalized the submission format and now provide evaluation scripts for self-evaluation, see *submissions and evaluations* section below
