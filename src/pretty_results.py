@@ -32,6 +32,9 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     root = Path(args.directory)
+    with (root / 'externaldata.json').open() as fp:
+        external_data_used = json.load(fp)
+
     tsv_files = root.glob('./*.tsv')
     results = {}
     data_all = None
@@ -44,6 +47,9 @@ if __name__ == '__main__':
         data_slice.insert(0, 'Team', team)
         data_slice.insert(0, 'N', range(1, len(data_slice)+1))
 
+        external_data = external_data_used.get(team, '-')
+        data_slice.insert(7, 'External data', external_data)
+
         if data_all is None:
             data_all = data_slice
         else:
@@ -53,7 +59,8 @@ if __name__ == '__main__':
 
     output = '# Submission results\n\n'
     output += '## Leaderboard - PR-AUC-macro\n\n'
-    output += leaderboard(data_all[['Team', 'Run', 'PR-AUC-macro', 'ROC-AUC-macro']], by='PR-AUC-macro') + '\n\n'
+    output += leaderboard(data_all[['Team', 'Run', 'PR-AUC-macro', 'ROC-AUC-macro', 'External data']],
+                          by='PR-AUC-macro') + '\n\n'
 
     plot(data_all, 'recall-macro', 'precision-macro', '../img/precision-recall.svg')
     # plot(data_all, 'ROC-AUC-macro', 'PR-AUC-macro', '../img/roc-pr.svg')
