@@ -66,7 +66,7 @@ if __name__ == '__main__':
     # plot(data_all, 'ROC-AUC-macro', 'PR-AUC-macro', '../img/roc-pr.svg')
 
     output += '## Leaderboard - F-score-macro\n\n'
-    output += leaderboard(data_all[['Team', 'Run', 'F-score-macro']], by='F-score-macro') + '\n\n'
+    output += leaderboard(data_all[['Team', 'Run', 'F-score-macro', 'External data']], by='F-score-macro') + '\n\n'
 
     output += '## Precision vs recall (macro)\n\n'
     output += '<img src="img/precision-recall.svg"/>\n\n'
