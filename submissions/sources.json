@@ -3,5 +3,6 @@
   "Taiinn (Taiwan)": ["https://github.com/annahung31/moodtheme-tagging"],
   "CP-JKU": ["https://github.com/kkoutini/cpjku_dcase19", "https://gitlab.cp.jku.at/shreyan/moodwalk"],
   "TaiInn (Innsbruck)": ["https://github.com/dbis-uibk/MediaEval2019"],
-  "baseline": ["https://github.com/MTG/mtg-jamendo-dataset"]
+  "baseline": ["https://github.com/MTG/mtg-jamendo-dataset"],
+  "AugLi": ["https://github.com/amirip/AugLi-MediaEval"]
 }
