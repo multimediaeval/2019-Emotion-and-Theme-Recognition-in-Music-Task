@@ -228,7 +228,8 @@ Music Technology Group, Universitat Pompeu Fabra, Spain (first.last@upf.edu):
 If you work on this task, please cite our [MediaEval 2019 task overview paper](https://github.com/multimediaeval/2019-Emotion-and-Theme-Recognition-in-Music-Task/blob/master/jamendo-emotion-theme-task-me19.pdf):
 
 ```
-Bogdanov, D., Porter A., Tovstogan P., & Won M. (2019). MediaEval 2019: Emotion and Theme Recognition in Music Using Jamendo. MediaEval 2019 Workshop.
+Bogdanov, D., Porter A., Tovstogan P., & Won M. (2019). MediaEval 2019:
+Emotion and Theme Recognition in Music Using Jamendo. MediaEval 2019 Workshop.
 ```
 
 ## Acknowledgements
