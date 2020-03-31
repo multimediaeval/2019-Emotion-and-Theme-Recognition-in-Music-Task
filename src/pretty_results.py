@@ -77,11 +77,16 @@ if __name__ == '__main__':
     with (root / 'sources.json').open() as fp:
         sources = json.load(fp)
 
+    with (root / 'papers.json').open() as fp:
+        papers = json.load(fp)
+
     output += '## All submissions\n\n'
     for team, result in results.items():
         output += '### ' + team + '\n\n'
         if team in sources:
             output += 'Source code: ' + ', '.join(['[{url}]({url})'.format(url=url) for url in sources[team]]) + '\n\n'
+        if team in papers:
+            output += 'Paper: ' + '[{url}]({url})'.format(url=papers[team]) + '\n\n'
         output += result[['PR-AUC-macro', 'ROC-AUC-macro', 'F-score-macro', 'precision-macro', 'recall-macro',
                           'PR-AUC-micro', 'ROC-AUC-micro', 'F-score-micro', 'precision-micro', 'recall-micro']].style.render() + '\n\n'
 
